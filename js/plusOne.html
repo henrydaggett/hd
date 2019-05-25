@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<style media="screen">
+</style>
+
+<body>
+  <p id="number">0</p>
+  <button onclick="plusOne()">+1</button>
+  <button onclick="plusTwo()">+2</button>
+</body>
+
+<script type="text/javascript">
+  function plusOne() {
+    document.getElementById("number").innerHTML = (Number(document.getElementById("number").innerHTML)) + 1;
+  }
+  function plusTwo() {
+    let num = Number(document.getElementById("number").innerHTML)
+    document.getElementById("number").innerHTML = num + 2;
+  }
+</script>
+
+</html>
