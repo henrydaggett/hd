@@ -5,6 +5,7 @@
 
 <body>
   <p id="number">0</p>
+  <button onclick="reset()">0</button>
   <button onclick="plusOne()">+1</button>
   <button onclick="plusTwo()">+2</button>
 </body>
@@ -16,6 +17,9 @@
   function plusTwo() {
     let num = Number(document.getElementById("number").innerHTML)
     document.getElementById("number").innerHTML = num + 2;
+  }
+  function reset() {
+    document.getElementById("number").innerHTML = "0";
   }
 </script>
 
