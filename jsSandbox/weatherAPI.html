@@ -7,7 +7,7 @@
 </body>
 
 <script type="text/javascript">
-const app = document.getElementsByTagName('body');
+const app = document.body;
 
 var request = new XMLHttpRequest();
 request.open('GET', 'http://api.openweathermap.org/data/2.5/find?q=London,uk&units=metric&APPID=530621cd4ebc82174337f0ca8b548abb', true);
@@ -23,7 +23,7 @@ request.onload = function () {
       h1.textContent = Number(data.list[0].main.temp) + "℃";
 
       div.appendChild(h1);
-      document.body.appendChild(div);
+      app.appendChild(div);
 
   } else {
     const errorMessage = document.createElement('marquee');
