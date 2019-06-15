@@ -10,7 +10,7 @@
 const app = document.body;
 
 var request = new XMLHttpRequest();
-request.open('GET', '//api.openweathermap.org/data/2.5/find?q=London,uk&units=metric&APPID=530621cd4ebc82174337f0ca8b548abb', true);
+request.open('GET', 'api.openweathermap.org/data/2.5/find?q=London,uk&units=metric&APPID=530621cd4ebc82174337f0ca8b548abb', true);
 request.onload = function () {
 
   var data = JSON.parse(this.response);
