@@ -6,33 +6,17 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface CBox {
-    }
     interface HStack {
-    }
-    interface PageContainer {
     }
     interface VStack {
     }
 }
 declare global {
-    interface HTMLCBoxElement extends Components.CBox, HTMLStencilElement {
-    }
-    var HTMLCBoxElement: {
-        prototype: HTMLCBoxElement;
-        new (): HTMLCBoxElement;
-    };
     interface HTMLHStackElement extends Components.HStack, HTMLStencilElement {
     }
     var HTMLHStackElement: {
         prototype: HTMLHStackElement;
         new (): HTMLHStackElement;
-    };
-    interface HTMLPageContainerElement extends Components.PageContainer, HTMLStencilElement {
-    }
-    var HTMLPageContainerElement: {
-        prototype: HTMLPageContainerElement;
-        new (): HTMLPageContainerElement;
     };
     interface HTMLVStackElement extends Components.VStack, HTMLStencilElement {
     }
@@ -41,25 +25,17 @@ declare global {
         new (): HTMLVStackElement;
     };
     interface HTMLElementTagNameMap {
-        "c-box": HTMLCBoxElement;
         "h-stack": HTMLHStackElement;
-        "page-container": HTMLPageContainerElement;
         "v-stack": HTMLVStackElement;
     }
 }
 declare namespace LocalJSX {
-    interface CBox {
-    }
     interface HStack {
-    }
-    interface PageContainer {
     }
     interface VStack {
     }
     interface IntrinsicElements {
-        "c-box": CBox;
         "h-stack": HStack;
-        "page-container": PageContainer;
         "v-stack": VStack;
     }
 }
@@ -67,9 +43,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "c-box": LocalJSX.CBox & JSXBase.HTMLAttributes<HTMLCBoxElement>;
             "h-stack": LocalJSX.HStack & JSXBase.HTMLAttributes<HTMLHStackElement>;
-            "page-container": LocalJSX.PageContainer & JSXBase.HTMLAttributes<HTMLPageContainerElement>;
             "v-stack": LocalJSX.VStack & JSXBase.HTMLAttributes<HTMLVStackElement>;
         }
     }
