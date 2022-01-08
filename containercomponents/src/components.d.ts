@@ -6,69 +6,71 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CBox {
+    }
     interface HStack {
     }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface PageContainer {
+    }
+    interface VStack {
     }
 }
 declare global {
+    interface HTMLCBoxElement extends Components.CBox, HTMLStencilElement {
+    }
+    var HTMLCBoxElement: {
+        prototype: HTMLCBoxElement;
+        new (): HTMLCBoxElement;
+    };
     interface HTMLHStackElement extends Components.HStack, HTMLStencilElement {
     }
     var HTMLHStackElement: {
         prototype: HTMLHStackElement;
         new (): HTMLHStackElement;
     };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLPageContainerElement extends Components.PageContainer, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLPageContainerElement: {
+        prototype: HTMLPageContainerElement;
+        new (): HTMLPageContainerElement;
+    };
+    interface HTMLVStackElement extends Components.VStack, HTMLStencilElement {
+    }
+    var HTMLVStackElement: {
+        prototype: HTMLVStackElement;
+        new (): HTMLVStackElement;
     };
     interface HTMLElementTagNameMap {
+        "c-box": HTMLCBoxElement;
         "h-stack": HTMLHStackElement;
-        "my-component": HTMLMyComponentElement;
+        "page-container": HTMLPageContainerElement;
+        "v-stack": HTMLVStackElement;
     }
 }
 declare namespace LocalJSX {
+    interface CBox {
+    }
     interface HStack {
     }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface PageContainer {
+    }
+    interface VStack {
     }
     interface IntrinsicElements {
+        "c-box": CBox;
         "h-stack": HStack;
-        "my-component": MyComponent;
+        "page-container": PageContainer;
+        "v-stack": VStack;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "c-box": LocalJSX.CBox & JSXBase.HTMLAttributes<HTMLCBoxElement>;
             "h-stack": LocalJSX.HStack & JSXBase.HTMLAttributes<HTMLHStackElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "page-container": LocalJSX.PageContainer & JSXBase.HTMLAttributes<HTMLPageContainerElement>;
+            "v-stack": LocalJSX.VStack & JSXBase.HTMLAttributes<HTMLVStackElement>;
         }
     }
 }
