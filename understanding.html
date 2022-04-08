@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <select name="" id="" onload="console.log('select loaded')"">
+  <option value=" 1">three</option>
+    <option value="2" selected>two</option>
+  </select>
+
+  <script>
+    // this function gets the selected item's dataset - note how "this" is used in the HTML: myFunction(this)
+      function myFunction(selection) {
+        console.log(selection)
+        var opt = selection.options[selection.selectedIndex];
+        console.log(opt)
+        var price = opt.dataset.price
+        console.log(price)
+      }
+  </script>
+
+  <select id="mySelect" onchange="myFunction(this)">
+    <option data-price="250" value="Audi">Audi</option>
+    <option data-price="130" value="BMW">BMW</option>
+    <option data-price="120" value="Mercedes">Mercedes</option>
+    <option data-price="400" value="Volvo">Volvo</option>
+  </select>
+
+
+
+  <style type="text/css">
+    .greenText {
+      color: green;
+    }
+  </style>
+  
+  <script type="text/javascript">
+    // this function adds an event listener to the select below onload - select dosn't support onload
+    window.addEventListener("load", function () {
+      console.log(document.getElementById("my_select"))
+    }, false);
+  </script>
+  
+  <select id="my_select">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="grape">Grape</option>
+  </select>
+
+</body>
+<script>
+
+  let componentJSON = [
+    { "template": "<div class='${layout} ${border}'></div>" },
+    {
+      "layout": "grid",
+      "border": "primary"
+    }
+  ];
+
+  const template = componentJSON[0].template
+  const classes = componentJSON[1]
+
+  let html = template.replace(/\$\{(.*?)\}/g, (match, key) => classes[key]);
+
+  console.log(html);
+
+// this function is showing how to build a new object from an old one
+  var content = {
+    "items": [{
+      "id": "02egnc0eo7qk53e9nh7igq6d48",
+      "summary": "Learn to code",
+      "start": {
+        "dateTime": "2017-03-04T19:00:00+05:30"
+      }
+    }]
+  };
+
+  var results = content.items.map(function (item) {
+    return {
+      id: item.id,
+      title: item.summary,
+      start: item.start.dateTime,
+      description: ""
+    };
+  });
+
+  console.log(results);
+
+  // global "selected Object"
+
+  // loop over all inputs and see what their values are
+  // when creating the inputs, have them all start with the same ID 
+  // Maybe onload have them all emit their values! (check if onload fires before they are generated?)
+  // will have to work out how to set defaults (probs loop)
+
+  // maybe the selectedObject can kind of exist in the component JSON from the start (cheating?)
+  const selectors = {
+    content = "Label",
+    icon = "",
+    size = "",
+    type = ""
+  }
+
+  // can I put the selector/value in an array instead of object: [selector, value]
+
+
+
+  // this function is showing how to replace template strings with regex to put values in them
+  let componentJSON = [
+    { "template": "<div class='${layout} ${border}'></div>" },
+    {
+      "layout": "grid",
+      "border": "primary"
+    }
+  ];
+
+  const template = componentJSON[0].template
+  const classes = componentJSON[1]
+
+  let html = template.replace(/\$\{(.*?)\}/g, (match, key) => classes[key]);
+
+  console.log(html);
+
+
+
+
+</script>
+
+</html>
