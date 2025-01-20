@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Web Component</title>
+</head>
+<body>
+  <!-- Example usage -->
+  <ai key="your-openai-api-key" prompt="Tell me a joke"></ai>
+
+  <script>
+    class AIComponent extends HTMLElement {
+      constructor() {
+        super();
+        this.attachShadow({ mode: "open" });
+      }
+
+      async connectedCallback() {
+        const key = this.getAttribute("key");
+        const prompt = this.getAttribute("prompt");
+
+        if (!key || !prompt) {
+          this.renderError("Both 'key' and 'prompt' attributes are required.");
+          return;
+        }
+
+        this.renderLoading();
+
+        try {
+          const response = await this.callOpenAI(key, prompt);
+          this.renderResponse(response.choices[0].text);
+        } catch (error) {
+          console.error(error);
+          this.renderError("Failed to fetch a response from OpenAI.");
+        }
+      }
+
+      async callOpenAI(key, prompt) {
+        const response = await fetch("https://api.openai.com/v1/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${key}`,
+          },
+          body: JSON.stringify({
+            model: "text-davinci-003",
+            prompt: prompt,
+            max_tokens: 100,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        return response.json();
+      }
+
+      renderLoading() {
+        this.shadowRoot.innerHTML = `<p>Loading...</p>`;
+      }
+
+      renderResponse(responseText) {
+        this.shadowRoot.innerHTML = `<p>${responseText}</p>`;
+      }
+
+      renderError(errorMessage) {
+        this.shadowRoot.innerHTML = `<p style="color: red;">${errorMessage}</p>`;
+      }
+    }
+
+    customElements.define("ai", AIComponent);
+  </script>
+</body>
+</html>
